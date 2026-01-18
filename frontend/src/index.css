@@ -1,0 +1,281 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    margin: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow: hidden;
+}
+
+code {
+    font-family: 'Space Grotesk', source-code-pro, Menlo, Monaco, Consolas, monospace;
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--primary)) hsl(var(--background));
+}
+
+*::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+}
+
+*::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary));
+    border-radius: 4px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary-glow));
+}
+
+@layer base {
+    :root {
+        /* Tech Green Theme - Enhanced Dark Mode with White/Gray Text */
+        --background: 220 20% 8%;
+        --foreground: 0 0% 98%;
+        
+        /* Primary: Emerald Green #10b981 */
+        --primary: 158 64% 52%;
+        --primary-glow: 158 64% 62%;
+        --primary-dark: 158 64% 42%;
+        --primary-foreground: 0 0% 100%;
+        
+        /* Secondary: Green accent */
+        --secondary: 142 71% 45%;
+        --secondary-glow: 142 71% 55%;
+        --secondary-foreground: 0 0% 100%;
+        
+        /* Accent: Light Emerald Green #34d399 */
+        --accent: 160 84% 39%;
+        --accent-glow: 160 84% 49%;
+        --accent-foreground: 0 0% 100%;
+        
+        /* UI Elements */
+        --card: 220 18% 12%;
+        --card-foreground: 0 0% 95%;
+        --popover: 220 18% 10%;
+        --popover-foreground: 0 0% 95%;
+        
+        --muted: 220 15% 18%;
+        --muted-foreground: 0 0% 70%;
+        
+        --destructive: 0 85% 60%;
+        --destructive-foreground: 0 0% 100%;
+        
+        --border: 158 50% 30%;
+        --input: 220 18% 15%;
+        --ring: 158 64% 52%;
+        
+        /* Success State */
+        --success: 142 76% 56%;
+        --success-glow: 142 76% 66%;
+        
+        /* Warning State */
+        --warning: 45 93% 60%;
+        --warning-glow: 45 100% 70%;
+        
+        /* Gradients */
+        --gradient-primary: linear-gradient(135deg, hsl(158 64% 52%), hsl(158 64% 62%));
+        --gradient-tech: linear-gradient(135deg, hsl(158 64% 52%), hsl(142 71% 45%), hsl(160 84% 39%));
+        --gradient-overlay: linear-gradient(180deg, hsl(220 20% 8% / 0), hsl(220 20% 8% / 0.95));
+        --gradient-subtle: linear-gradient(180deg, hsl(220 18% 12%), hsl(220 20% 8%));
+        
+        /* Animations */
+        --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        --transition-bounce: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        
+        --radius: 0.5rem;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+    body {
+        @apply bg-background text-foreground;
+    }
+}
+
+@layer base {
+
+/* Custom Animations */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes scan-line {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(100%);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+@keyframes spin-slow {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spin-reverse {
+    from {
+        transform: rotate(360deg);
+    }
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes pulse-slow {
+    0%, 100% {
+        opacity: 0.2;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.4;
+        transform: scale(1.05);
+    }
+}
+
+@keyframes orbit-1 {
+    0% {
+        transform: rotate(0deg) translateX(200px) rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg) translateX(200px) rotate(-360deg);
+    }
+}
+
+@keyframes orbit-2 {
+    0% {
+        transform: rotate(0deg) translateX(200px) rotate(0deg);
+    }
+    100% {
+        transform: rotate(-360deg) translateX(200px) rotate(360deg);
+    }
+}
+
+@keyframes orbit-3 {
+    0% {
+        transform: rotate(90deg) translateX(200px) rotate(-90deg);
+    }
+    100% {
+        transform: rotate(450deg) translateX(200px) rotate(-450deg);
+    }
+}
+
+@keyframes orbit-4 {
+    0% {
+        transform: rotate(180deg) translateX(200px) rotate(-180deg);
+    }
+    100% {
+        transform: rotate(540deg) translateX(200px) rotate(-540deg);
+    }
+}
+
+/* Utility Classes */
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+    animation: spin-slow 8s linear infinite;
+}
+
+.animate-spin-reverse {
+    animation: spin-reverse 6s linear infinite;
+}
+
+.animate-pulse-slow {
+    animation: pulse-slow 3s ease-in-out infinite;
+}
+
+.animate-orbit-1 {
+    animation: orbit-1 4s linear infinite;
+    transform-origin: 250px 250px;
+}
+
+.animate-orbit-2 {
+    animation: orbit-2 5s linear infinite;
+    transform-origin: 250px 250px;
+}
+
+.animate-orbit-3 {
+    animation: orbit-3 6s linear infinite;
+    transform-origin: 250px 250px;
+}
+
+.animate-orbit-4 {
+    animation: orbit-4 4.5s linear infinite;
+    transform-origin: 250px 250px;
+}
+
+.shimmer-effect {
+    background: linear-gradient(
+        90deg,
+        transparent,
+        hsl(var(--primary) / 0.1),
+        transparent
+    );
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite;
+}
+
+    [data-debug-wrapper="true"] {
+        display: contents !important;
+    }
+
+    [data-debug-wrapper="true"] > * {
+        margin-left: inherit;
+        margin-right: inherit;
+        margin-top: inherit;
+        margin-bottom: inherit;
+        padding-left: inherit;
+        padding-right: inherit;
+        padding-top: inherit;
+        padding-bottom: inherit;
+        column-gap: inherit;
+        row-gap: inherit;
+        gap: inherit;
+        border-left-width: inherit;
+        border-right-width: inherit;
+        border-top-width: inherit;
+        border-bottom-width: inherit;
+        border-left-style: inherit;
+        border-right-style: inherit;
+        border-top-style: inherit;
+        border-bottom-style: inherit;
+        border-left-color: inherit;
+        border-right-color: inherit;
+        border-top-color: inherit;
+        border-bottom-color: inherit;
+    }
+}
